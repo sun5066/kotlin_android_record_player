@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout>
 
     <data>
+
         <variable
             name="viewModel"
-            type="github.sun5066.record.ui.MainActivity" />
+            type="github.sun5066.record.ui.adapter.RecordViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:orientation="vertical"
         tools:context=".ui.MainActivity">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_record"
+            setItems="@{viewModel.selectAll()}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom" />
 
-    </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_anchor="@id/bar" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

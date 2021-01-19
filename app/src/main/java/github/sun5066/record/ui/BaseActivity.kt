@@ -8,7 +8,7 @@ import androidx.databinding.ViewDataBinding
 
 abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity() {
 
-    lateinit var mBinding: DB
+    lateinit var gBinding: DB
 
     @LayoutRes
     abstract fun getLayoutResourceId(): Int
@@ -20,7 +20,7 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mBinding = DataBindingUtil.setContentView(this, getLayoutResourceId())
+        gBinding = DataBindingUtil.setContentView(this, getLayoutResourceId())
 
         this.initDataBinding()
         this.initView()
