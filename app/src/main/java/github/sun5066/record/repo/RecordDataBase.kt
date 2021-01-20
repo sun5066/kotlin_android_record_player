@@ -10,11 +10,9 @@ import java.util.concurrent.Executors
 
 @Database(entities = [RecordData::class], version = 1, exportSchema = false)
 abstract class RecordDataBase : RoomDatabase() {
-
     abstract fun getRecordDao(): RecordDao?
 
     companion object {
-        @Volatile
         private var sInstance: RecordDataBase? = null
         private const val NUMBER_THREADS = 5;
 
@@ -22,7 +20,6 @@ abstract class RecordDataBase : RoomDatabase() {
             NUMBER_THREADS
         )
 
-        @JvmStatic
         fun getInstance(context: Context): RecordDataBase? {
             if (sInstance == null) {
                 sInstance = Room.databaseBuilder(

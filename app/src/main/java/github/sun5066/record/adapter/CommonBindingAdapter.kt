@@ -1,5 +1,7 @@
 package github.sun5066.record.adapter
 
+import android.util.Log
+import android.view.View
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import github.sun5066.record.model.RecordData
@@ -18,5 +20,11 @@ object CommonBindingAdapter {
         _items?.let { recordRecyclerAdapter.setList(it) }
         _recyclerView.scrollToPosition(recordRecyclerAdapter.itemCount - 1)
         recordRecyclerAdapter.notifyDataSetChanged()
+    }
+
+    @BindingAdapter("onClickEvent")
+    @JvmStatic
+    fun onClickEvent(_view: View, _listener: View.OnClickListener?) {
+        _listener?.let { _view.setOnClickListener(it) }
     }
 }

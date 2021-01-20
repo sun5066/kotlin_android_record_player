@@ -13,12 +13,12 @@ interface RecordDao {
     @Query("SELECT * FROM tbl_records")
     open fun selectAll(): LiveData<MutableList<RecordData>>
 
-    @Query("SELECT * FROM tbl_records WHERE id= :_id")
-    open fun findById(_id: Long): RecordData
+    @Query("SELECT * FROM tbl_records WHERE id= :id")
+    open fun findById(id: Long): RecordData
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    open fun save(_recordData: RecordData)
+    open fun save(recordData: RecordData)
 
-    @Query("DELETE FROM tbl_records WHERE id= :_id")
-    open fun delete(_id: Long)
+    @Query("DELETE FROM tbl_records WHERE id= :id")
+    open fun delete(id: Long)
 }

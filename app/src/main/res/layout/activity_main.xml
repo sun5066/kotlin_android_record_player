@@ -20,7 +20,8 @@
             android:id="@+id/list_record"
             setItems="@{viewModel.selectAll()}"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bar"
@@ -29,6 +30,8 @@
             android:layout_gravity="bottom" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_activity_record"
+            android:onClick="onClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_anchor="@id/bar" />
