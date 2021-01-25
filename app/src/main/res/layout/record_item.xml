@@ -9,13 +9,15 @@
 
         <variable
             name="viewModel"
-            type="github.sun5066.record.ui.adapter.RecordViewModel" />
+            type="github.sun5066.record.ui.adapter.RecordAdapterViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/layout_record_items"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_bottom">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btn_img"
@@ -30,7 +32,6 @@
             android:id="@+id/layout_record_info"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:background="@drawable/border_bottom"
             android:gravity="center_vertical"
             android:orientation="vertical"
             app:layout_constraintLeft_toRightOf="@id/btn_img"

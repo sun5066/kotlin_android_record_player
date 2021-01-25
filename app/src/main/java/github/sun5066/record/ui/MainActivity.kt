@@ -8,14 +8,17 @@ import androidx.lifecycle.ViewModelProvider
 import github.sun5066.record.R
 import github.sun5066.record.databinding.ActivityMainBinding
 import github.sun5066.record.model.RecordData
-import github.sun5066.record.ui.adapter.RecordViewModel
+import github.sun5066.record.ui.adapter.RecordAdapter
+import github.sun5066.record.ui.adapter.RecordAdapterViewModel
+import github.sun5066.record.ui.record.RecordActivity
 import github.sun5066.record.util.IntentKey
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
 
-    private val mRecordViewModel: RecordViewModel by lazy {
+    private lateinit var mRecordRecyclerAdapter: RecordAdapter
+    private val mRecordAdapterViewModel: RecordAdapterViewModel by lazy {
         ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(
-            RecordViewModel::class.java
+            RecordAdapterViewModel::class.java
         )
     }
 
@@ -23,7 +26,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
 
     override fun initDataBinding() {
         mBinding.lifecycleOwner = this
-        mBinding.viewModel = mRecordViewModel
+        mBinding.viewModel = mRecordAdapterViewModel
     }
 
     override fun initView() {
@@ -31,8 +34,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        val intent = Intent(this, RecordActivity::class.java)
-        startActivityForResult(intent, IntentKey.REQUEST_KEY)
+        when (v?.id) {
+            R.id.btn_activity_record -> {
+                val intent = Intent(this, RecordActivity::class.java)
+                startActivityForResult(intent, IntentKey.REQUEST_KEY)
+            }
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -42,8 +49,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 IntentKey.REQUEST_KEY -> {
-                    mRecordViewModel.save(recordData)
-                    Log.d("aaaass222", mRecordViewModel.selectAll().value.toString())
+                    mRecordAdapterViewModel.save(recordData)
                 }
             }
         }

@@ -1,23 +1,20 @@
-package github.sun5066.record.ui
+package github.sun5066.record.ui.record
 
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
-import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import github.sun5066.record.R
 import github.sun5066.record.databinding.ActivityRecordBinding
 import github.sun5066.record.model.RecordData
-import github.sun5066.record.ui.adapter.RecordViewModel
+import github.sun5066.record.ui.BaseActivity
 import java.io.IOException
-import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -34,13 +31,6 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(), View.OnClickListen
     private var permissions: Array<String> = arrayOf(android.Manifest.permission.RECORD_AUDIO)
 
     private lateinit var mUuid: UUID
-
-    private val mRecordViewModel: RecordViewModel by lazy {
-        ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory(application)
-        ).get(RecordViewModel::class.java)
-    }
 
     /**********************************************************************************************/
 
@@ -60,7 +50,6 @@ class RecordActivity : BaseActivity<ActivityRecordBinding>(), View.OnClickListen
 
     override fun initDataBinding() {
         mBinding.lifecycleOwner = this
-        mBinding.viewModel = mRecordViewModel
     }
 
     override fun initView() {

@@ -29,7 +29,6 @@ class RecordAdapter(private var mRecordList: MutableList<RecordData>) :
 
     inner class RecordHolder(_recordItemBinding: RecordItemBinding) :
         RecyclerView.ViewHolder(_recordItemBinding.root) {
-
         val gRecordItemBinding = _recordItemBinding
     }
 }

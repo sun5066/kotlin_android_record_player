@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="github.sun5066.record.ui.adapter.RecordViewModel" />
+            type="github.sun5066.record.ui.record.RecordViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".ui.RecordActivity">
+        tools:context=".ui.record.RecordActivity">
 
         <LinearLayout
             android:id="@+id/linear_layout"

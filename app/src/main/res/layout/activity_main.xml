@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="github.sun5066.record.ui.adapter.RecordViewModel" />
+            type="github.sun5066.record.ui.adapter.RecordAdapterViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -18,7 +18,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_record"
-            setItems="@{viewModel.selectAll()}"
+            setItems="@{viewModel.MLiveData}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
@@ -31,9 +31,10 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_activity_record"
-            android:onClick="onClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onClick"
             app:layout_anchor="@id/bar" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

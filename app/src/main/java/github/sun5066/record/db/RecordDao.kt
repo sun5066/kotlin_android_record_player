@@ -1,4 +1,4 @@
-package github.sun5066.record.repo
+package github.sun5066.record.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -10,7 +10,7 @@ import github.sun5066.record.model.RecordData
 @Dao
 interface RecordDao {
 
-    @Query("SELECT * FROM tbl_records")
+    @Query("SELECT * FROM tbl_records ORDER BY id DESC")
     open fun selectAll(): LiveData<MutableList<RecordData>>
 
     @Query("SELECT * FROM tbl_records WHERE id= :id")

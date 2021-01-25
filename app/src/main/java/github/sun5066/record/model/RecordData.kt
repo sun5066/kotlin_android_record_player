@@ -6,26 +6,26 @@ import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity(tableName = "tbl_records")
-class RecordData: Serializable {
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    var id: Long? = 0
+data class RecordData(
 
     @ColumnInfo(name = "title")
-    var title: String? = ""
+    var title: String = "",
 
     @ColumnInfo(name = "writer")
-    var writer: String? = ""
+    var writer: String = "",
 
     @ColumnInfo(name = "record")
-    var record: String? = ""
+    var record: String = "",
 
     @ColumnInfo(name = "date")
-    var date: String? = ""
+    var date: String = "",
 
     @ColumnInfo(name = "time")
-    var time: String? = ""
+    var time: String = "",
 
-    fun toStringV2() =
-        "[{RecordData {id: $id}, {title: $title}, {writer: $writer}, {record: $record}, {date: $date}, {time: $time}}]"
+    ) : Serializable {
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    public var id: Long = 0
 }

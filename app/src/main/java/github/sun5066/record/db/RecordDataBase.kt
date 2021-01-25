@@ -1,4 +1,4 @@
-package github.sun5066.record.repo
+package github.sun5066.record.db
 
 import android.content.Context
 import androidx.room.Database
@@ -15,7 +15,6 @@ abstract class RecordDataBase : RoomDatabase() {
     companion object {
         private var sInstance: RecordDataBase? = null
         private const val NUMBER_THREADS = 5;
-
         public val databaseWriterExecutor: ExecutorService = Executors.newFixedThreadPool(
             NUMBER_THREADS
         )
@@ -25,7 +24,7 @@ abstract class RecordDataBase : RoomDatabase() {
                 sInstance = Room.databaseBuilder(
                     context.applicationContext,
                     RecordDataBase::class.java,
-                    "records_database"
+                    "record_db"
                 ).allowMainThreadQueries().build()
             }
             return sInstance

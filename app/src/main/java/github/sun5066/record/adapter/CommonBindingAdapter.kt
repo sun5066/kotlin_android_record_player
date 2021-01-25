@@ -18,6 +18,7 @@ object CommonBindingAdapter {
 
         val recordRecyclerAdapter = _recyclerView.adapter as RecordAdapter
         _items?.let { recordRecyclerAdapter.setList(it) }
+
         _recyclerView.scrollToPosition(recordRecyclerAdapter.itemCount - 1)
         recordRecyclerAdapter.notifyDataSetChanged()
     }
