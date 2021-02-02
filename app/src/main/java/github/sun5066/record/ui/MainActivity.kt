@@ -22,6 +22,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
         )
     }
 
+    public interface RecordNavigator {
+        fun onClickListener(_view: View)
+    }
+
     override fun getLayoutResourceId(): Int = R.layout.activity_main
 
     override fun initDataBinding() {
@@ -44,12 +48,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val recordData: RecordData = data?.getSerializableExtra("record") as RecordData
+        data?.let {
+            val recordData: RecordData = it?.getSerializableExtra("record") as RecordData
 
-        if (resultCode == Activity.RESULT_OK) {
-            when (requestCode) {
-                IntentKey.REQUEST_KEY -> {
-                    mRecordAdapterViewModel.save(recordData)
+            if (resultCode == Activity.RESULT_OK) {
+                when (requestCode) {
+                    IntentKey.REQUEST_KEY -> {
+                        mRecordAdapterViewModel.save(recordData)
+                    }
                 }
             }
         }

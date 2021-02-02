@@ -17,6 +17,7 @@
         android:id="@+id/layout_record_items"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        onClickEvent="@{viewModel.onClickEvent}"
         android:background="@drawable/border_bottom">
 
         <androidx.appcompat.widget.AppCompatImageButton
